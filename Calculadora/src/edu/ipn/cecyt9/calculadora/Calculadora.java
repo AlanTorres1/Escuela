@@ -9,7 +9,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
-import javax.swing.JButton;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -53,7 +52,7 @@ public class Calculadora extends JFrame {
 	 */
 	public Calculadora() {
 		super();
-		setSize(250, 300);
+		setSize(300, 300);
 		setTitle("Calculadora Simple");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -90,8 +89,15 @@ public class Calculadora extends JFrame {
 		nuevoBotonOperacion("-");
 		nuevoBotonOperacion("*");
 		nuevoBotonOperacion("/");
+                nuevoBotonOperacion("mod");
+                nuevoBotonOperacion("Raiz");
+                nuevoBotonOperacion("sin");
+                nuevoBotonOperacion("cos");
+                nuevoBotonOperacion("tan");
+                
 		nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
+                
 
 		panel.add("East", panelOperaciones);
 
@@ -192,9 +198,23 @@ public class Calculadora extends JFrame {
 			resultado /= new Double(pantalla.getText());
 		} else if (operacion.equals("*")) {
 			resultado *= new Double(pantalla.getText());
-		}
+		} else if (operacion.equals("Raiz")){
+                        resultado = new Double(Math.sqrt(Double.parseDouble(pantalla.getText())));
+                } else if (operacion.equals("sin")) {
+                        resultado = new Double(Math.sin(Math.toRadians(Double.parseDouble(pantalla.getText()))));                 
+                } else if (operacion.equals("cos")) {
+                        resultado = new Double(Math.cos(Math.toRadians(Double.parseDouble(pantalla.getText()))));
+                } else if (operacion.equals("tan")) {
+                        resultado = new Double(Math.tan(Math.toRadians(Double.parseDouble(pantalla.getText()))));
+                } else if (operacion.equals("mod")) {
+                        resultado %= new Double(pantalla.getText());
+                }
+                
+                
 
 		pantalla.setText("" + resultado);
 		operacion = "";
 	}
+        
+        
 }
